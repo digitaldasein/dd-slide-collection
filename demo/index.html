@@ -1,0 +1,87 @@
+<!--
+SPDX-FileCopyrightText: 2022 Digital Dasein <https://digital-dasein.gitlab.io/>
+SPDX-FileCopyrightText: 2022 Gerben Peeters <gerben@digitaldasein.org>
+SPDX-FileCopyrightText: 2022 Senne Van Baelen <senne@digitaldasein.org>
+
+SPDX-License-Identifier: MIT
+-->
+
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <style>
+    body,html {
+      margin:0;
+      padding:0;
+    }
+    dd-slide-collection .slide {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo"></div>
+
+  <script type="module">
+    import { html, render } from 'lit';
+    import '../dist/src/dd-slide-collection.js';
+
+    render(
+      html`
+
+      <h1>dd-slide-collection demo</h1>
+      <h2>This example does not include any presentation framework, nor other components</h2>
+
+      <br><br>
+      <h3>Example 1: slide collection as (default) "list"</h3>
+
+      <dd-slide-collection main-title="My cool title"
+                           author="Senne Van Baelen, Gerben Peeters"
+                           img-src="logo.jpeg">
+
+        <!--<div slot="caption">This is a custom Caption</div>-->
+        <section class="slide">
+          <h2>OK now, let's roll</h2>
+        </section>
+
+        <section class="slide">
+          <div class="center">
+            <h2>This is the second slide!</h2>
+            <p>With a paragraph</p>
+            <ul>
+              <li>And a list</li>
+              <li>Second item</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="slide">
+          <h2>Slide 3</h2>
+        </section>
+
+        <section class="slide">
+          <h2>Slide 4</h2>
+        </section>
+
+      </dd-slide-collection>
+
+      <br><br>
+      <h3>Example 2: Get data from JSON config</h3>
+
+      <dd-slide-collection config-path="config.json"
+                           author="SomeOtherAUTHOR">
+
+        <section class="slide">
+          <h2>OK now, let's roll</h2>
+        </section>
+
+      </dd-slide-collection>
+
+      `,
+
+      document.querySelector('#demo')
+    );
+  </script>
+</body>
+</html>

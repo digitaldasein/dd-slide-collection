@@ -1,0 +1,52 @@
+# dd-slide-collection CI config
+
+before_script:
+  - apt-get update -qq && apt-get install
+
+# DD GRID CI
+build:
+  image: mcr.microsoft.com/playwright:v1.23.0-focal
+
+  cache:
+    paths:
+      - .yarn
+      - node_modules
+
+  script:
+    - yarn install
+    - yarn run build
+
+test:
+  image: mcr.microsoft.com/playwright:v1.23.0-focal
+
+  cache:
+    paths:
+      - .yarn
+      - node_modules
+
+  coverage: '/Code coverage: \d+/'
+
+  script:
+    - yarn install
+    - yarn run test
+
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
+
+pages:
+  image: mcr.microsoft.com/playwright:v1.23.0-focal
+  cache:
+    paths:
+      - .yarn
+      - node_modules
+  script:
+    - yarn install
+    - yarn run test
+    - mv coverage/ public/
+  stage: deploy
+  artifacts:
+    paths:
+      - public
