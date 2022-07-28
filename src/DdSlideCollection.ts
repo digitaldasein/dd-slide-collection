@@ -485,7 +485,7 @@ export class DdSlideCollection extends LitElement {
       `;
   }
 
-  /* c8 ignore next 50 */
+  /* c8 ignore next 73 */
   private _updateView = (toggleView=false) => {
 
     if ( this.goToPrint ) return;
@@ -561,7 +561,7 @@ export class DdSlideCollection extends LitElement {
     this._updateStyle();
   }
 
-  /* c8 ignore next 9 */
+  /* c8 ignore next 13 */
   private _handleSlideClick = () => {
     const slideElems = document.querySelectorAll('.slide');
     for( const [idx, elem] of slideElems.entries() ) {
@@ -577,7 +577,7 @@ export class DdSlideCollection extends LitElement {
     }
   }
 
-  /* c8 ignore next 3 */
+  /* c8 ignore next 5 */
   private _handleResize = () => {
     if ( document.querySelector('.shower') ) return;
     this._updateView()
@@ -599,7 +599,7 @@ export class DdSlideCollection extends LitElement {
     }
   }
 
-  /* c8 ignore next 9 */
+  /* c8 ignore next 11 */
   private _handleScroll = () => {
     // external framework
     if ( document.querySelector('.shower') ) return;
@@ -613,7 +613,7 @@ export class DdSlideCollection extends LitElement {
     }
   }
 
-  /* c8 ignore next 45 */
+  /* c8 ignore next 48 */
   private _interactKeys = () => {
     document.onkeydown = (e:KeyboardEvent) => {
       const evt = e || window.event;
