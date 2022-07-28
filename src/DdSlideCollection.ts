@@ -561,7 +561,7 @@ export class DdSlideCollection extends LitElement {
     this._updateStyle();
   }
 
-  /* c8 ignore next 13 */
+  /* c8 ignore next 15 */
   private _handleSlideClick = () => {
     const slideElems = document.querySelectorAll('.slide');
     for( const [idx, elem] of slideElems.entries() ) {
