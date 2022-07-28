@@ -485,7 +485,7 @@ export class DdSlideCollection extends LitElement {
       `;
   }
 
-  /* c8 ignore next 73 */
+  /* c8 ignore next 75 */
   private _updateView = (toggleView=false) => {
 
     if ( this.goToPrint ) return;
