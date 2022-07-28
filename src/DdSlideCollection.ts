@@ -584,7 +584,7 @@ export class DdSlideCollection extends LitElement {
   }
 
 
-  /* c8 ignore next 13 */
+  /* c8 ignore next 14 */
   private _handleLocation = () => {
     // shower framework related behavior
     const urlString = window.location.href;
@@ -599,7 +599,7 @@ export class DdSlideCollection extends LitElement {
     }
   }
 
-  /* c8 ignore next 11 */
+  /* c8 ignore next 13 */
   private _handleScroll = () => {
     // external framework
     if ( document.querySelector('.shower') ) return;
