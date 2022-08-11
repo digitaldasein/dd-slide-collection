@@ -143,7 +143,7 @@ export class DdSlideCollection extends LitElement {
    * |**`--dd-color-caption-bg`**  |`var(--dd-color-prim-dark)` | caption background color                                                                  |
    * |**`--dd-color-caption-fg`**  |`var(--dd-text-color-light`)| caption foreground color                                                                  |
    * |**`--dd-slide-gap`**         |`96px`                      | gap between slides in `list`-mode                                                         |
-   * |**`--dd-slide-ratio`**       |`calc(16/9)`                | slide ratio |
+   * |**`--dd-slide-ratio`**       |`calc(16/9)`                | slide apsect ratio |
    * |**`--dd-slide-width`**       |`1024px`                    | slide width (this, together with`--dd-slide-ratio` determines the slide height)           |
    * |**`--dd-full-scale-factor`** |`1`                         | factor for presenting in full screen (e.g. 0.8 will render the `full` slide at  80% of the maximum screen size) |
    * |**`--dd-font`**              |`24px/2 'Roboto', sans-serif`| font style |
