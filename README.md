@@ -29,10 +29,15 @@ npm i @digitaldasein/dd-slide-collection
 
 ## Usage
 
+As a module:
+
 ```html
 <script type="module">
   import 'path/to/dd-slide-collection.js';
 </script>
+
+<dd-slide-collection>...</dd-slide-collection>
+```
 
 <dd-slide-collection></dd-slide-collection>
 ```
@@ -45,6 +50,16 @@ yarn start
 
 To run a local development server that serves the basic demo located in 
 `demo/index.html`
+
+For a production-ready build, either integrated into a library or standalone, 
+check out the
+[libcompono](https://gitlab.com/digital-dasein/software/html-presentations/libcompono) 
+library.
+
+## Docs
+
+&rarr; [go to 
+docs](https://digital-dasein.gitlab.io/software/html-presentations/dd-slide-collection/docs/classes/DdSlideCollection.html)
 
 ## Linting and formatting
 
@@ -74,6 +89,8 @@ To run the tests in interactive watch mode run:
 yarn test:watch
 ```
 
+Test results are available 
+[here](https://digital-dasein.gitlab.io/software/html-presentations/dd-slide-collection/lcov-report/).
 
 ## Tooling configs
 

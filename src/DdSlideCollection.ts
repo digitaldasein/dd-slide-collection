@@ -76,33 +76,95 @@ async function getJsonConfig(url: string) {
 /* Main                                                                */
 /*---------------------------------------------------------------------*/
 
+/**
+ * Main class for HTML web component **`dd-slide-collection`**
+ *
+ * For **styling** this component, check out {@link DdSlideCollection.styles |
+ * the styles section}.
+ *
+ * <u>**Important note**</u>: all lit-component properties (interpreted here as
+ * `other properties`) that are documented here have a **corresponding
+ * HTML attribute**. The _non-attribute_ properties are consired private,
+ * and are ingored in the documentation.
+ *
+ * @example
+ * A simple slide collection containing two slide elements, one `dd-component`
+ * (`dd-slide`), and one native `section` with `class="slide"`. This example
+ * moreover illustrates a limited amount of collection config attributes.
+ *
+ * ```html
+ * <html>
+ *   [...]
+ *   <dd-slide-collection main-title="My main title"
+ *                        sub-title="my sub title"
+ *                        author="some author"
+ *                        organisation="My Org"
+ *                        organisation-url=""
+ *                        date="">
+ *
+ *     <dd-slide>
+ *       <h2>My first slide</h2>
+ *     </dd-slide>
+ *     <section class="slide">
+ *       <h2>A section also works</h2>
+ *     </section>
+ *   </dd-slide-collection>
+ *   [...]
+ * </html>
+ * ```
+ */
+
 export class DdSlideCollection extends LitElement {
+  /**
+   * To style the `dd-slide-collection` component, use the following **CSS host
+   * variables** (including their default values):
+   *
+   * |  <div style="width:200px">CSS variable</div>   | <div style="width:200px">Default</div>   | Description |
+   * |:-----------------------------------------------|:-----------------------------------------|:------------|
+   * |**`--dd-color-prim`**        |`rgba(153, 155, 132, 1)`    | primary `dd-component` color, which propagates into nested `dd-elements`                  |
+   * |**`--dd-color-prim-dark`**   |`rgba(65, 90, 72, 1)`       | *dark-theme* primary `dd-component` color, which propagates into nested `dd-elements`     |
+   * |**`--dd-color-sec`**         |`rgba(248, 237, 227, 1)`    | secundary `dd-component` color, which propagates into nested `dd-elements`                |
+   * |**`--dd-color-sec-dark`**    |`rgba(238, 254, 216, 1)`    | *dark-theme* secundary `dd-component` color, which propagates into nested `dd-elements` |
+   * |**`--dd-color-list-bg`**     |`rgba(248, 237, 227, 0.5)`  | background color for `list`-mode                                                          |
+   * |**`--dd-color-text`**        |`rgba(0, 0, 0, 0.9)`        | main text color,  which propagates into nested `dd-elements`                              |
+   * |**`--dd-color-text-light`**  |`rgba(255, 255, 255, 1)`    | *light* text color, which propagates into nested `dd-elements`                            |
+   * |**`--dd-color-caption-bg`**  |`var(--dd-color-prim-dark)` | caption background color                                                                  |
+   * |**`--dd-color-caption-fg`**  |`var(--dd-text-color-light`)| caption foreground color                                                                  |
+   * |**`--dd-slide-gap`**         |`96px`                      | gap between slides in `list`-mode                                                         |
+   * |**`--dd-slide-ratio`**       |`calc(16/9)`                | slide ratio |
+   * |**`--dd-slide-width`**       |`1024px`                    | slide width (this, together with`--dd-slide-ratio` determines the slide height)           |
+   * |**`--dd-full-scale-factor`** |`1`                         | factor for presenting in full screen (e.g. 0.8 will render the `full` slide at  80% of the maximum screen size) |
+   * |**`--dd-font`**              |`24px/2 'Roboto', sans-serif`| font style |
+   * |**`--dd-font-size`**         |`24px`                      | font _size_ setter |
+   * |**`--dd-caption-height`**    |`250px`                     | height of the caption in `list`-mode |
+   * |**`--dd-slide-nr-font-size`**|`16px`                      | slide number font-size |
+   * |**`--dd-slide-nr-right`**    |`13px`                      | slide number padding right |
+   * |**`--dd-slide-nr-color`**    |`var(--dd-color-text)`      | slide number color|
+   *
+   * The variables can be set anywhere in your HTML context (e.g. in `:root`,
+   * up until the `dd-slide-collection` component itself).
+   *
+   *
+   */
+
   static styles = css`
     :host {
       /* Ddpres fillers */
 
       /* dd color pallette */
-      --slide-collect-prim-color: var(--dd-prim-color, rgba(153, 155, 132, 1));
-      --slide-collect-prim-color-alpha: var(
-        --dd-prim-color,
-        rgba(153, 155, 132, 0.5)
-      );
-      --slide-collect-prim-color-dark: var(
-        --dd-prim-color-dark,
+      --slide-collect-color-prim: var(--dd-color-prim, rgba(153, 155, 132, 1));
+      --slide-collect-color-prim-dark: var(
+        --dd-color-prim-dark,
         rgba(65, 90, 72, 1)
       );
-      --slide-collect-sec-color: var(--dd-sec-color, rgba(248, 237, 227, 1));
-      --slide-collect-sec-color-alpha: var(
-        --dd-sec-color,
+      --slide-collect-color-sec: var(--dd-color-sec, rgba(248, 237, 227, 1));
+      --slide-collect-list-bg-color: var(
+        --dd-color-list-bg,
         rgba(248, 237, 227, 0.5)
       );
-      --slide-collect-sec-color-dark: var(
-        --dd-sec-color-dark,
-        rgba(238, 254, 216, 1)
-      );
-      --slide-collect-text-color: var(--dd-text-color, rgba(0, 0, 0, 0.9));
+      --slide-collect-text-color: var(--dd-color-text, rgba(0, 0, 0, 0.9));
       --slide-collect-text-color-light: var(
-        --dd-text-color-light,
+        --dd-color-text-light,
         rgba(255, 255, 255, 1)
       );
 
@@ -113,7 +175,7 @@ export class DdSlideCollection extends LitElement {
         --dd-slide-height,
         calc(var(--slide-collect-width) / var(--slide-collect-ratio))
       );
-      --slide-collect-full-scale: var(--dd-full-scale, 1);
+      --slide-collect-full-scale-factor: var(--dd-full-scale-factor, 1);
       --slide-collect-font: var(--dd-font, 24px/2 'Roboto', sans-serif);
       --slide-collect-font-size: var(--dd-font-size, 24px);
 
@@ -125,8 +187,14 @@ export class DdSlideCollection extends LitElement {
       --caption-padding-right: 30px;
       --caption-padding-bottom: 30px;
       --caption-img-height: calc(0.6 * var(--caption-height));
-      --caption-fg-color: white;
-      --caption-bg-color: var(--slide-collect-prim-color-dark, blue);
+      --caption-fg-color: var(
+        --dd-color-caption-fg,
+        var(--slide-collect-text-color-light)
+      );
+      --caption-bg-color: var(
+        --dd-color-caption-bg,
+        var(--slide-collect-color-prim-dark)
+      );
 
       --slide-collect-slide-nr-font-size: var(--dd-slide-nr-font-size, 16px);
       --slide-collect-slide-nr-right: var(--dd-slide-nr-right, 13px);
@@ -160,7 +228,7 @@ export class DdSlideCollection extends LitElement {
 
     :host(.list) ::slotted(section:hover),
     :host(.list) ::slotted(.slide:hover) {
-      box-shadow: 0 0 0 20px var(--slide-collect-prim-color);
+      box-shadow: 0 0 0 20px var(--slide-collect-color-prim);
     }
 
     ::slotted(section),
@@ -181,7 +249,7 @@ export class DdSlideCollection extends LitElement {
     :host(.full) ::slotted(.slide) {
       position: absolute;
       transform-origin: 0 0;
-      transform: scale(var(--slide-collect-full-scale));
+      transform: scale(var(--slide-collect-full-scale-factor));
       border: 1px solid black;
     }
 
@@ -207,7 +275,7 @@ export class DdSlideCollection extends LitElement {
     :host(.list) ::slotted(section) {
       position: relative;
       box-shadow: calc(var(--slide-scale) * 4px) calc(var(--slide-scale) * 4px)
-        0 calc(var(--slide-scale) * 4px) var(--slide-collect-prim-color-dark);
+        0 calc(var(--slide-scale) * 4px) var(--slide-collect-color-prim-dark);
       transform-origin: 0 0;
       transform: scale(var(--slide-scale));
       display: block;
@@ -231,7 +299,7 @@ export class DdSlideCollection extends LitElement {
         auto-fill,
         calc(var(--slide-collect-width) * var(--slide-scale))
       );
-      background-color: var(--slide-collect-sec-color-alpha);
+      background-color: var(--slide-collect-color-sec-alpha);
       /*overflow-x: hidden;*/
     }
 
@@ -374,42 +442,134 @@ export class DdSlideCollection extends LitElement {
     }
   `;
 
+  /**
+   * Main presentation title
+   *
+   * **Corresponding attribute:** `main-title`
+   *
+   * **Default value:** `""` (empty string)
+   * ```
+   */
   @property({ type: String, attribute: 'main-title' })
   mainTitle = DEFAULT_ATTRIBUTES.mainTitle;
 
+  /**
+   * Presentation subtitle
+   *
+   * **Corresponding attribute:** `sub-title`
+   *
+   * **Default value:** `""` (empty string)
+   * ```
+   */
   @property({ type: String, attribute: 'sub-title' })
   subTitle = DEFAULT_ATTRIBUTES.subTitle;
 
+  /**
+   * Presentation author
+   *
+   * **Corresponding attribute:** `author`
+   *
+   * **Default value:** `""` (empty string)
+   * ```
+   */
   @property({ type: String, attribute: 'author' })
   author = DEFAULT_ATTRIBUTES.author;
 
+  /**
+   * Presentation date
+   *
+   * **Corresponding attribute:** `date`
+   *
+   * **Default value:** `""` (empty string)
+   * ```
+   */
   @property({ type: String, attribute: 'date' })
   date = DEFAULT_ATTRIBUTES.date;
 
+  /**
+   * Url (hyperlink) to _show_ inside the caption
+   *
+   * **Corresponding attribute:** `url`
+   *
+   * **Default value:** `""` (empty string)
+   * ```
+   */
   @property({ type: String, attribute: 'url' })
   url = DEFAULT_ATTRIBUTES.url;
 
+  /**
+   * Hyperlink behind caption image (e.g. logo)
+   *
+   * **Corresponding attribute:** `img-url`
+   *
+   * **Default value:** `""` (empty string)
+   * ```
+   */
   @property({ type: String, attribute: 'img-url' })
   imgUrl = DEFAULT_ATTRIBUTES.imgUrl;
 
+  /**
+   * Image source for caption image (e.g. logo)
+   *
+   * **Corresponding attribute:** `img-src`
+   *
+   * **Default value:** `""` (empty string)
+   * ```
+   */
   @property({ type: String, attribute: 'img-src' })
   imgSrc = DEFAULT_ATTRIBUTES.imgSrc;
 
+  /**
+   * Name of organisation
+   *
+   * **Corresponding attribute:** `organisation`
+   *
+   * **Default value:** `""` (empty string)
+   * ```
+   */
   @property({ type: String, attribute: 'organisation' })
   organisation = DEFAULT_ATTRIBUTES.organisation;
 
+  /**
+   * Hyperlink to organisation
+   *
+   * **Corresponding attribute:** `organisation-url`
+   *
+   * **Default value:** `""` (empty string)
+   * ```
+   */
   @property({ type: String, attribute: 'organisation-url' })
   organisationUrl = DEFAULT_ATTRIBUTES.organisationUrl;
 
+  /**
+   * Path to JSON config file (corresponding inline attributes will
+   * **overwrite** attributes defined in JSON config
+   *
+   * **Corresponding attribute:** `config-path`
+   *
+   * **Default value:** `""` (empty string)
+   * ```
+   */
   @property({ type: String, attribute: 'config-path' })
   jsonConfig = DEFAULT_ATTRIBUTES.configPath;
 
+  /** @ignore */
   @property({ type: Boolean, attribute: 'full' })
   full = DEFAULT_ATTRIBUTES.full;
 
+  /**
+   * Factor for presenting in full screen mode (e.g. 0.8 will render the `full`
+   * slide at 80% of the maximum screen size)
+   *
+   * **Corresponding attribute:** `full-scale-factor`
+   *
+   * **Default value:** `1`
+   * ```
+   */
   @property({ type: Number, attribute: 'full-scale-factor' })
   fullScaleFactor = DEFAULT_ATTRIBUTES.fullScaleFactor;
 
+  /** @ignore */
   @property({ type: Boolean, attribute: false })
   goToPrint = false;
 

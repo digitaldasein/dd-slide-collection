@@ -45,7 +45,9 @@ pages:
   script:
     - yarn install
     - yarn run test
+    - yarn run docs
     - mv coverage/ public/
+    - mv docs public/
   stage: deploy
   artifacts:
     paths:

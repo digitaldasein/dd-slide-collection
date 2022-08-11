@@ -37,7 +37,7 @@ Copyright: $YEAR $NAME Senne Van Baelen <senne@digitaldasein.org>
 License: MIT
 
 # avoid license headers in root-level yarn stuff
-Files: **/yarn.lock yarn.lock
+Files: **/yarn.lock yarn.lock yarn-error.log
 Copyright: $YEAR $NAME Digital Dasein <https://digital-dasein.gitlab.io>
 Copyright: $YEAR $NAME Gerben Peeters <gerben@digitaldasein.org>
 Copyright: $YEAR $NAME Senne Van Baelen <senne@digitaldasein.org>

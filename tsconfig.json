@@ -18,5 +18,12 @@
     "declaration": true,
     "incremental": true
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts"],
+  "typedocOptions": {
+    "entryPoints": [
+        "src/index.ts"
+    ],
+    "out": "docs",
+    "customCss": "./td_litstyles.css"
+  }
 }
