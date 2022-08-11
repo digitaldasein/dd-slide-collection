@@ -112,6 +112,18 @@ async function getJsonConfig(url: string) {
  *   [...]
  * </html>
  * ```
+ *
+ * The caption in `list`-mode has a default style, however, you could simply
+ * add a <b>custom caption</b> with the `caption` slot inside a slide collection (it
+ * will overwrite the default):
+ *
+ * ```html
+ * <dd-slide-collection ...>
+ *   <div slot="caption">
+ *      This is a custom caption, which can hold any HTML
+ *      content you want
+ *   </div>
+ *  </dd-slide-collection>
  */
 
 export class DdSlideCollection extends LitElement {
@@ -448,7 +460,6 @@ export class DdSlideCollection extends LitElement {
    * **Corresponding attribute:** `main-title`
    *
    * **Default value:** `""` (empty string)
-   * ```
    */
   @property({ type: String, attribute: 'main-title' })
   mainTitle = DEFAULT_ATTRIBUTES.mainTitle;
@@ -459,7 +470,6 @@ export class DdSlideCollection extends LitElement {
    * **Corresponding attribute:** `sub-title`
    *
    * **Default value:** `""` (empty string)
-   * ```
    */
   @property({ type: String, attribute: 'sub-title' })
   subTitle = DEFAULT_ATTRIBUTES.subTitle;
@@ -470,7 +480,6 @@ export class DdSlideCollection extends LitElement {
    * **Corresponding attribute:** `author`
    *
    * **Default value:** `""` (empty string)
-   * ```
    */
   @property({ type: String, attribute: 'author' })
   author = DEFAULT_ATTRIBUTES.author;
@@ -481,7 +490,6 @@ export class DdSlideCollection extends LitElement {
    * **Corresponding attribute:** `date`
    *
    * **Default value:** `""` (empty string)
-   * ```
    */
   @property({ type: String, attribute: 'date' })
   date = DEFAULT_ATTRIBUTES.date;
@@ -492,7 +500,6 @@ export class DdSlideCollection extends LitElement {
    * **Corresponding attribute:** `url`
    *
    * **Default value:** `""` (empty string)
-   * ```
    */
   @property({ type: String, attribute: 'url' })
   url = DEFAULT_ATTRIBUTES.url;
@@ -503,7 +510,6 @@ export class DdSlideCollection extends LitElement {
    * **Corresponding attribute:** `img-url`
    *
    * **Default value:** `""` (empty string)
-   * ```
    */
   @property({ type: String, attribute: 'img-url' })
   imgUrl = DEFAULT_ATTRIBUTES.imgUrl;
@@ -514,7 +520,6 @@ export class DdSlideCollection extends LitElement {
    * **Corresponding attribute:** `img-src`
    *
    * **Default value:** `""` (empty string)
-   * ```
    */
   @property({ type: String, attribute: 'img-src' })
   imgSrc = DEFAULT_ATTRIBUTES.imgSrc;
@@ -525,7 +530,6 @@ export class DdSlideCollection extends LitElement {
    * **Corresponding attribute:** `organisation`
    *
    * **Default value:** `""` (empty string)
-   * ```
    */
   @property({ type: String, attribute: 'organisation' })
   organisation = DEFAULT_ATTRIBUTES.organisation;
@@ -536,7 +540,6 @@ export class DdSlideCollection extends LitElement {
    * **Corresponding attribute:** `organisation-url`
    *
    * **Default value:** `""` (empty string)
-   * ```
    */
   @property({ type: String, attribute: 'organisation-url' })
   organisationUrl = DEFAULT_ATTRIBUTES.organisationUrl;
@@ -548,7 +551,6 @@ export class DdSlideCollection extends LitElement {
    * **Corresponding attribute:** `config-path`
    *
    * **Default value:** `""` (empty string)
-   * ```
    */
   @property({ type: String, attribute: 'config-path' })
   jsonConfig = DEFAULT_ATTRIBUTES.configPath;
@@ -564,7 +566,6 @@ export class DdSlideCollection extends LitElement {
    * **Corresponding attribute:** `full-scale-factor`
    *
    * **Default value:** `1`
-   * ```
    */
   @property({ type: Number, attribute: 'full-scale-factor' })
   fullScaleFactor = DEFAULT_ATTRIBUTES.fullScaleFactor;

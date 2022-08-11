@@ -39,9 +39,6 @@ As a module:
 <dd-slide-collection>...</dd-slide-collection>
 ```
 
-<dd-slide-collection></dd-slide-collection>
-```
-
 ## Local Demo with `web-dev-server`
 
 ```bash
