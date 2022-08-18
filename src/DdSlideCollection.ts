@@ -678,7 +678,7 @@ export class DdSlideCollection extends LitElement {
         const scale =
           (1 / Math.max(offsetWidth / innerWidth, offsetHeight / innerHeight)) *
           this.fullScaleFactor;
-        this.style.setProperty('--slide-collect-full-scale', `${scale}`);
+        this.style.setProperty('--slide-collect-full-scale-factor', `${scale}`);
         const offset = (innerHeight - offsetHeight * scale) / 2;
         // all slides
         const slideElems = document.querySelectorAll('.slide');
@@ -706,6 +706,8 @@ export class DdSlideCollection extends LitElement {
     }
 
     // update url
+    // WARNING: need to be carefull with pushState event triggers
+    // (alternaive?)
     const baseUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
     if (this.full)
       window.history.pushState({ fullPage: true }, 'Slide', `${baseUrl}?full`);
@@ -825,9 +827,13 @@ export class DdSlideCollection extends LitElement {
     window.addEventListener('resize', this._handleResize);
     document.addEventListener('scroll', this._handleScroll);
     window.addEventListener('beforeprint', () => {
+      /* c8 ignore next 2 */
+      // how to test?
       this.goToPrint = true;
     });
     window.addEventListener('afterprint', () => {
+      /* c8 ignore next 2 */
+      // how to test?
       this.goToPrint = false;
     });
   }
@@ -838,9 +844,13 @@ export class DdSlideCollection extends LitElement {
     window.removeEventListener('resize', this._handleResize);
     document.removeEventListener('scroll', this._handleScroll);
     window.removeEventListener('beforeprint', () => {
+      /* c8 ignore next 2 */
+      // how to test?
       this.goToPrint = true;
     });
     window.removeEventListener('afterprint', () => {
+      /* c8 ignore next 2 */
+      // how to test?
       this.goToPrint = false;
     });
     super.disconnectedCallback();
