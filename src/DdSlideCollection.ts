@@ -133,13 +133,13 @@ export class DdSlideCollection extends LitElement {
    *
    * |  <div style="width:200px">CSS variable</div>   | <div style="width:200px">Default</div>   | Description |
    * |:-----------------------------------------------|:-----------------------------------------|:------------|
-   * |**`--dd-color-prim`**        |`rgba(153, 155, 132, 1)`    | primary `dd-component` color, which propagates into nested `dd-elements`                  |
-   * |**`--dd-color-prim-dark`**   |`rgba(65, 90, 72, 1)`       | *dark-theme* primary `dd-component` color, which propagates into nested `dd-elements`     |
-   * |**`--dd-color-sec`**         |`rgba(248, 237, 227, 1)`    | secundary `dd-component` color, which propagates into nested `dd-elements`                |
-   * |**`--dd-color-sec-dark`**    |`rgba(238, 254, 216, 1)`    | *dark-theme* secundary `dd-component` color, which propagates into nested `dd-elements` |
-   * |**`--dd-color-list-bg`**     |`rgba(248, 237, 227, 0.5)`  | background color for `list`-mode                                                          |
-   * |**`--dd-color-text`**        |`rgba(0, 0, 0, 0.9)`        | main text color,  which propagates into nested `dd-elements`                              |
-   * |**`--dd-color-text-light`**  |`rgba(255, 255, 255, 1)`    | *light* text color, which propagates into nested `dd-elements`                            |
+   * |**`--dd-color-prim`**        |`None`                      | primary `dd-component` color, which propagates into nested `dd-elements`                  |
+   * |**`--dd-color-prim-dark`**   |`None`                      | *dark-theme* primary `dd-component` color, which propagates into nested `dd-elements`     |
+   * |**`--dd-color-sec`**         |`None`                      | secundary `dd-component` color, which propagates into nested `dd-elements`                |
+   * |**`--dd-color-sec-dark`**    |`None`                      | *dark-theme* secundary `dd-component` color, which propagates into nested `dd-elements` |
+   * |**`--dd-color-list-bg`**     |`None`                      | background color for `list`-mode                                                          |
+   * |**`--dd-color-text`**        |`None`                      | main text color,  which propagates into nested `dd-elements`                              |
+   * |**`--dd-color-text-light`**  |`None`                      | *light* text color, which propagates into nested `dd-elements`                            |
    * |**`--dd-color-caption-bg`**  |`var(--dd-color-prim-dark)` | caption background color                                                                  |
    * |**`--dd-color-caption-fg`**  |`var(--dd-text-color-light`)| caption foreground color                                                                  |
    * |**`--dd-slide-gap`**         |`96px`                      | gap between slides in `list`-mode                                                         |
