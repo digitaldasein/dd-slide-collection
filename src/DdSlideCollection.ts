@@ -136,12 +136,12 @@ export class DdSlideCollection extends LitElement {
    * |**`--dd-color-prim`**        |`None`                      | primary `dd-component` color, which propagates into nested `dd-elements`                  |
    * |**`--dd-color-prim-dark`**   |`None`                      | *dark-theme* primary `dd-component` color, which propagates into nested `dd-elements`     |
    * |**`--dd-color-sec`**         |`None`                      | secundary `dd-component` color, which propagates into nested `dd-elements`                |
-   * |**`--dd-color-sec-dark`**    |`None`                      | *dark-theme* secundary `dd-component` color, which propagates into nested `dd-elements` |
+   * |**`--dd-color-sec-dark`**    |`None`                      | *dark-theme* secundary `dd-component` color, which propagates into nested `dd-elements`   |
    * |**`--dd-color-list-bg`**     |`None`                      | background color for `list`-mode                                                          |
    * |**`--dd-color-text`**        |`None`                      | main text color,  which propagates into nested `dd-elements`                              |
    * |**`--dd-color-text-light`**  |`None`                      | *light* text color, which propagates into nested `dd-elements`                            |
-   * |**`--dd-color-caption-bg`**  |`var(--dd-color-prim-dark)` | caption background color                                                                  |
-   * |**`--dd-color-caption-fg`**  |`var(--dd-text-color-light`)| caption foreground color                                                                  |
+   * |**`--dd-color-caption-bg`**  |`var(--dd-color-prim-dark)` | caption ackground color, falls back to `rgba(65, 90, 72, 1)` if not defined               |
+   * |**`--dd-color-caption-fg`**  |`var(--dd-color-text-light`)| caption foreground color                                                                  |
    * |**`--dd-slide-gap`**         |`96px`                      | gap between slides in `list`-mode                                                         |
    * |**`--dd-slide-ratio`**       |`calc(16/9)`                | slide apsect ratio |
    * |**`--dd-slide-width`**       |`1024px`                    | slide width (this, together with`--dd-slide-ratio` determines the slide height)           |
