@@ -150,12 +150,12 @@ export class DdSlideCollection extends LitElement {
    * |**`--dd-font-size`**         |`24px`                      | font _size_ setter |
    * |**`--dd-caption-height`**    |`250px`                     | height of the caption in `list`-mode |
    * |**`--dd-slide-nr-font-size`**|`16px`                      | slide number font-size |
-   * |**`--dd-slide-nr-right`**    |`13px`                      | slide number padding right |
    * |**`--dd-slide-nr-color`**    |`var(--dd-color-text)`      | slide number color|
+   * |**`--dd-slide-nr-right`**    |`13px`                      | slide number padding right |
+   * |**`--dd-slide-nr-bottom`**   |`calc(0.2em + var(--dd-footer-bottom, var(--progress-size, 0em)))`                      | slide number padding right |
    *
    * The variables can be set anywhere in your HTML context (e.g. in `:root`,
    * up until the `dd-slide-collection` component itself).
-   *
    *
    */
 
@@ -210,10 +210,11 @@ export class DdSlideCollection extends LitElement {
 
       --slide-collect-slide-nr-font-size: var(--dd-slide-nr-font-size, 16px);
       --slide-collect-slide-nr-right: var(--dd-slide-nr-right, 13px);
-      --slide-collect-slide-nr-bottom: calc(
-        var(--dd-slide-nr-bottom, 0.2em) +
-          var(--dd-footer-bottom, var(--progress-size, 0em))
+
+      --dd-slide-nr-bottom: calc(
+        0.2em + var(--dd-footer-bottom, var(--progress-size, 0em))
       );
+      --slide-collect-slide-nr-bottom: var(--dd-slide-nr-bottom, 0.2em);
       --slide-collect-slide-nr-color: var(
         --dd-slide-nr-color,
         var(--slide-collect-text-color)
