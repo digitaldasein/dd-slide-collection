@@ -280,6 +280,11 @@ export class DdSlideCollection extends LitElement {
       content: counter(slide);
       z-index: 2;
     }
+    ::slotted(.slide.titlepage)::after,
+    ::slotted(dd-titlepage)::after {
+      counter-increment: slide;
+      content: '';
+    }
 
     /* List */
 
