@@ -138,9 +138,9 @@ export class DdSlideCollection extends LitElement {
    * |**`--dd-color-sec`**         |`None`                      | secundary `dd-component` color, which propagates into nested `dd-elements`                |
    * |**`--dd-color-sec-dark`**    |`None`                      | *dark-theme* secundary `dd-component` color, which propagates into nested `dd-elements`   |
    * |**`--dd-color-list-bg`**     |`None`                      | background color for `list`-mode                                                          |
-   * |**`--dd-color-text`**        |`None`                      | main text color,  which propagates into nested `dd-elements`                              |
-   * |**`--dd-color-text-light`**  |`None`                      | *light* text color, which propagates into nested `dd-elements`                            |
-   * |**`--dd-color-caption-bg`**  |`var(--dd-color-prim-dark)` | caption ackground color, falls back to `rgba(65, 90, 72, 1)` if not defined               |
+   * |**`--dd-color-text`**        |`rgba(0, 0, 0, 0.9)`        | main text color,  which propagates into nested `dd-elements`                              |
+   * |**`--dd-color-text-light`**  |`rgba(255, 255, 255, 1)`    | *light* text color, which propagates into nested `dd-elements`                            |
+   * |**`--dd-color-caption-bg`**  |`var(--dd-color-prim-dark, rgba(65, 90, 72, 1))`       | caption ackground color, falls back to `rgba(65, 90, 72, 1)` if not defined               |
    * |**`--dd-color-caption-fg`**  |`var(--dd-color-text-light`)| caption foreground color                                                                  |
    * |**`--dd-slide-gap`**         |`96px`                      | gap between slides in `list`-mode                                                         |
    * |**`--dd-slide-ratio`**       |`calc(16/9)`                | slide apsect ratio |
@@ -164,21 +164,13 @@ export class DdSlideCollection extends LitElement {
       /* Ddpres fillers */
 
       /* dd color pallette */
-      --slide-collect-color-prim: var(--dd-color-prim, rgba(153, 155, 132, 1));
-      --slide-collect-color-prim-dark: var(
-        --dd-color-prim-dark,
-        rgba(65, 90, 72, 1)
-      );
-      --slide-collect-color-sec: var(--dd-color-sec, rgba(248, 237, 227, 1));
-      --slide-collect-list-bg-color: var(
-        --dd-color-list-bg,
-        rgba(248, 237, 227, 0.5)
-      );
+
+      --slide-collect-color-prim: var(--dd-color-prim);
+      --slide-collect-color-prim-dark: var( --dd-color-prim-dark);
+      --slide-collect-color-sec: var(--dd-color-sec);
+      --slide-collect-list-bg-color: var( --dd-color-list-bg);
       --slide-collect-text-color: var(--dd-color-text, rgba(0, 0, 0, 0.9));
-      --slide-collect-text-color-light: var(
-        --dd-color-text-light,
-        rgba(255, 255, 255, 1)
-      );
+      --slide-collect-text-color-light: var(--dd-color-text-light, rgba(255, 255, 255, 1));
 
       --slide-collect-gap: var(--dd-slide-gap, 96px);
       --slide-collect-ratio: var(--dd-slide-ratio, calc(16 / 9));
@@ -193,7 +185,7 @@ export class DdSlideCollection extends LitElement {
 
       --caption-height: var(--dd-caption-height, 250px);
       --caption-center-width: 60%;
-      --caption-font-size: calc(1.8 * var(--slide-collect-font-size));
+      --caption-font-size: calc(2.2 * var(--slide-collect-font-size));
       --caption-padding-left: 30px;
       --caption-padding-top: 30px;
       --caption-padding-right: 30px;
@@ -201,12 +193,11 @@ export class DdSlideCollection extends LitElement {
       --caption-img-height: calc(0.6 * var(--caption-height));
       --caption-fg-color: var(
         --dd-color-caption-fg,
-        var(--slide-collect-text-color-light)
+         var(--slide-collect-text-color-light)
       );
-      --caption-bg-color: var(
-        --dd-color-caption-bg,
-        var(--slide-collect-color-prim-dark)
-      );
+
+      --dd-color-caption-bg: var(--dd-color-prim-dark,rgba(65, 90, 72, 1)); 
+      --caption-bg-color: var( --dd-color-caption-bg );
 
       --slide-collect-slide-nr-font-size: var(--dd-slide-nr-font-size, 16px);
       --slide-collect-slide-nr-right: var(--dd-slide-nr-right, 13px);
@@ -408,14 +399,14 @@ export class DdSlideCollection extends LitElement {
     .dd-caption-subtitle {
       padding-top: 20px;
       line-height: 1em;
-      font-size: calc(0.7 * var(--caption-font-size));
+      font-size: calc(0.55 * var(--caption-font-size));
       color: var(--caption-color-subtitle, rgba(255, 255, 255, 0.7));
     }
 
     .dd-caption-right {
       flex-grow: 1;
       text-align: right;
-      font-size: calc(0.45 * var(--caption-font-size));
+      font-size: calc(0.35 * var(--caption-font-size));
       align-self: flex-end;
       padding: var(--caption-padding-top) var(--caption-padding-right)
         var(--caption-padding-bottom) 0;
