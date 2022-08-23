@@ -168,7 +168,7 @@ export class DdSlideCollection extends LitElement {
       --slide-collect-color-prim: var(--dd-color-prim);
       --slide-collect-color-prim-dark: var( --dd-color-prim-dark);
       --slide-collect-color-sec: var(--dd-color-sec);
-      --slide-collect-list-bg-color: var( --dd-color-list-bg);
+      --slide-collect-list-bg-color: var(--dd-color-list-bg, rgba(248, 237, 227, 0.5));
       --slide-collect-text-color: var(--dd-color-text, rgba(0, 0, 0, 0.9));
       --slide-collect-text-color-light: var(--dd-color-text-light, rgba(255, 255, 255, 1));
 
@@ -231,7 +231,7 @@ export class DdSlideCollection extends LitElement {
 
     :host(.list) ::slotted(section:hover),
     :host(.list) ::slotted(.slide:hover) {
-      box-shadow: 0 0 0 20px var(--slide-collect-color-prim);
+      box-shadow: 0 0 0 20px var(--slide-collect-color-prim, rgba(65, 90, 72, 0.5));
     }
 
     ::slotted(section),
@@ -283,7 +283,7 @@ export class DdSlideCollection extends LitElement {
     :host(.list) ::slotted(section) {
       position: relative;
       box-shadow: calc(var(--slide-scale) * 4px) calc(var(--slide-scale) * 4px)
-        0 calc(var(--slide-scale) * 4px) var(--slide-collect-color-prim-dark);
+        0 calc(var(--slide-scale) * 4px) var(--slide-collect-color-prim-dark, rgba(0,0,0,0.8));
       transform-origin: 0 0;
       transform: scale(var(--slide-scale));
       display: block;
@@ -307,7 +307,7 @@ export class DdSlideCollection extends LitElement {
         auto-fill,
         calc(var(--slide-collect-width) * var(--slide-scale))
       );
-      background-color: var(--slide-collect-color-sec-alpha);
+      background-color: var(--slide-collect-list-bg-color);
       /*overflow-x: hidden;*/
     }
 
