@@ -152,7 +152,7 @@ export class DdSlideCollection extends LitElement {
    * |**`--dd-slide-nr-font-size`**|`16px`                      | slide number font-size |
    * |**`--dd-slide-nr-color`**    |`var(--dd-color-text)`      | slide number color     |
    * |**`--dd-slide-nr-right`**    |`13px`                      | slide number right     |
-   * |**`--dd-slide-nr-bottom`**   |`var(--dd-footer-bottom)`   | slide number bottom    |
+   * |**`--dd-slide-nr-bottom`**   |`0`                         | slide number bottom    |
    *
    * The variables can be set anywhere in your HTML context (e.g. in `:root`,
    * up until the `dd-slide-collection` component itself).
@@ -208,7 +208,7 @@ export class DdSlideCollection extends LitElement {
       --slide-collect-slide-nr-font-size: var(--dd-slide-nr-font-size, 16px);
       --slide-collect-slide-nr-right: var(--dd-slide-nr-right, 13px);
 
-      --dd-slide-nr-bottom: var(--dd-footer-bottom);
+      --dd-slide-nr-bottom: 0em;
 
       --slide-collect-slide-nr-bottom: var(--dd-slide-nr-bottom, 0.2em);
       --slide-collect-slide-nr-color: var(
