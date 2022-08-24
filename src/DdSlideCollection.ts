@@ -138,10 +138,10 @@ export class DdSlideCollection extends LitElement {
    * |**`--dd-color-sec`**         |`None`                      | secundary `dd-component` color, which propagates into nested `dd-elements`                |
    * |**`--dd-color-sec-dark`**    |`None`                      | *dark-theme* secundary `dd-component` color, which propagates into nested `dd-elements`   |
    * |**`--dd-color-list-bg`**     |`None`                      | background color for `list`-mode                                                          |
-   * |**`--dd-color-text`**        |`rgba(0, 0, 0, 0.9)`        | main text color,  which propagates into nested `dd-elements`                              |
-   * |**`--dd-color-text-light`**  |`rgba(255, 255, 255, 1)`    | *light* text color, which propagates into nested `dd-elements`                            |
+   * |**`--dd-color-text`**        |`None (default)`            | main text color,  which propagates into nested `dd-elements`                              |
+   * |**`--dd-color-text-light`**  |`None (default)`            | *light* text color, which propagates into nested `dd-elements`                            |
    * |**`--dd-color-caption-bg`**  |`var(--dd-color-prim-dark, rgba(65, 90, 72, 1))`       | caption ackground color, falls back to `rgba(65, 90, 72, 1)` if not defined               |
-   * |**`--dd-color-caption-fg`**  |`var(--dd-color-text-light`)| caption foreground color                                                                  |
+   * |**`--dd-color-caption-fg`**  |`var(--dd-color-text-light, rgba(255,255,255,1)`)| caption foreground color                                                                  |
    * |**`--dd-slide-gap`**         |`96px`                      | gap between slides in `list`-mode                                                         |
    * |**`--dd-slide-ratio`**       |`calc(16/9)`                | slide apsect ratio |
    * |**`--dd-slide-width`**       |`1024px`                    | slide width (this, together with`--dd-slide-ratio` determines the slide height)           |
