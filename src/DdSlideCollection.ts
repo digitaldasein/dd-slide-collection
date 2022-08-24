@@ -166,11 +166,17 @@ export class DdSlideCollection extends LitElement {
       /* dd color pallette */
 
       --slide-collect-color-prim: var(--dd-color-prim);
-      --slide-collect-color-prim-dark: var( --dd-color-prim-dark);
+      --slide-collect-color-prim-dark: var(--dd-color-prim-dark);
       --slide-collect-color-sec: var(--dd-color-sec);
-      --slide-collect-list-bg-color: var(--dd-color-list-bg, rgba(248, 237, 227, 0.5));
+      --slide-collect-list-bg-color: var(
+        --dd-color-list-bg,
+        rgba(248, 237, 227, 0.5)
+      );
       --slide-collect-text-color: var(--dd-color-text, rgba(0, 0, 0, 0.9));
-      --slide-collect-text-color-light: var(--dd-color-text-light, rgba(255, 255, 255, 1));
+      --slide-collect-text-color-light: var(
+        --dd-color-text-light,
+        rgba(255, 255, 255, 1)
+      );
 
       --slide-collect-gap: var(--dd-slide-gap, 96px);
       --slide-collect-ratio: var(--dd-slide-ratio, calc(16 / 9));
@@ -193,17 +199,17 @@ export class DdSlideCollection extends LitElement {
       --caption-img-height: calc(0.6 * var(--caption-height));
       --caption-fg-color: var(
         --dd-color-caption-fg,
-         var(--slide-collect-text-color-light)
+        var(--slide-collect-text-color-light)
       );
 
-      --dd-color-caption-bg: var(--dd-color-prim-dark,rgba(65, 90, 72, 1)); 
-      --caption-bg-color: var( --dd-color-caption-bg );
+      --dd-color-caption-bg: var(--dd-color-prim-dark, rgba(65, 90, 72, 1));
+      --caption-bg-color: var(--dd-color-caption-bg);
 
       --slide-collect-slide-nr-font-size: var(--dd-slide-nr-font-size, 16px);
       --slide-collect-slide-nr-right: var(--dd-slide-nr-right, 13px);
 
-      --dd-slide-nr-bottom: var(--dd-footer-bottom)
-      );
+      --dd-slide-nr-bottom: var(--dd-footer-bottom);
+
       --slide-collect-slide-nr-bottom: var(--dd-slide-nr-bottom, 0.2em);
       --slide-collect-slide-nr-color: var(
         --dd-slide-nr-color,
@@ -231,7 +237,8 @@ export class DdSlideCollection extends LitElement {
 
     :host(.list) ::slotted(section:hover),
     :host(.list) ::slotted(.slide:hover) {
-      box-shadow: 0 0 0 20px var(--slide-collect-color-prim, rgba(65, 90, 72, 0.5));
+      box-shadow: 0 0 0 20px
+        var(--slide-collect-color-prim, rgba(65, 90, 72, 0.5));
     }
 
     ::slotted(section),
@@ -283,7 +290,8 @@ export class DdSlideCollection extends LitElement {
     :host(.list) ::slotted(section) {
       position: relative;
       box-shadow: calc(var(--slide-scale) * 4px) calc(var(--slide-scale) * 4px)
-        0 calc(var(--slide-scale) * 4px) var(--slide-collect-color-prim-dark, rgba(0,0,0,0.8));
+        0 calc(var(--slide-scale) * 4px)
+        var(--slide-collect-color-prim-dark, rgba(0, 0, 0, 0.8));
       transform-origin: 0 0;
       transform: scale(var(--slide-scale));
       display: block;
