@@ -17,7 +17,7 @@ import '../src/dd-slide-collection.js';
 /* Utils                                                               */
 /*---------------------------------------------------------------------*/
 
-function timeout(ms:number) {
+function timeout(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
@@ -41,72 +41,74 @@ describe('DdSlideCollection', () => {
   });
 
   it('Organisation and corresponding URL rendering', async () => {
-    const el = await fixture<DdSlideCollection>(html`
-    <dd-slide-collection organisation="myOrg" organisation-url="http:myorg.org">
+    const el = await fixture<DdSlideCollection>(html` <dd-slide-collection
+      organisation="myOrg"
+      organisation-url="http:myorg.org"
+    >
     </dd-slide-collection>`);
     // console.log(el.classList);
-    // expect(el.shadowRoot!.querySelector(".list")).to.not.equal(null);
+    expect(el.shadowRoot!.querySelector('.list')).to.not.equal(null);
   });
 
-
   it('Hide custom caption slot', async () => {
-    const el = await fixture<DdSlideCollection>(html`
-    <dd-slide-collection>
+    const el = await fixture<DdSlideCollection>(html` <dd-slide-collection>
       <div slot="caption">My custom caption</div>
     </dd-slide-collection>`);
     const hiddenEl = el.querySelector('div[slot="caption"]');
-    expect((hiddenEl as HTMLElement)!.style.display).to.equal("none");
+    expect((hiddenEl as HTMLElement)!.style.display).to.equal('none');
   });
 
   it('Allow custom caption creationg', async () => {
-    const el = await fixture<DdSlideCollection>(html`
-    <dd-slide-collection>
+    const el = await fixture<DdSlideCollection>(html` <dd-slide-collection>
       <div slot="caption">My custom caption</div>
     </dd-slide-collection>`);
-    const customElem = el.shadowRoot!.querySelector("div.dd-caption-custom");
+    const customElem = el.shadowRoot!.querySelector('div.dd-caption-custom');
     expect(customElem).to.not.equal(null);
   });
 
   it('Get config from JSON file', async () => {
-    const response = await fetch("./test/data/config.json");
+    const response = await fetch('./test/data/config.json');
     const jsonConfig = await response.json();
 
-    const el = await fixture<DdSlideCollection>(html`
-    <dd-slide-collection config-path="/test/data/config.json">
+    const el = await fixture<DdSlideCollection>(html` <dd-slide-collection
+      config-path="/test/data/config.json"
+    >
       <section></section>
     </dd-slide-collection>`);
 
     // wait to make sure data is fetched
     await timeout(100);
-    const captionTitleHtml = el.shadowRoot!.
-                             querySelector(".dd-caption-title")!.innerHTML
+    const captionTitleHtml =
+      el.shadowRoot!.querySelector('.dd-caption-title')!.innerHTML;
     expect(captionTitleHtml).to.include(jsonConfig.title);
   });
 
   it('Return error (as title) if JSON file does not exist', async () => {
-    const el = await fixture<DdSlideCollection>(html`
-    <dd-slide-collection config-path="/test/data/nonconfig.json">
+    const el = await fixture<DdSlideCollection>(html` <dd-slide-collection
+      config-path="/test/data/nonconfig.json"
+    >
       <section></section>
     </dd-slide-collection>`);
 
     // wait to make sure data is fetched
     await timeout(100);
-    const captionTitleHtml = el.shadowRoot!.
-                             querySelector(".dd-caption-title")!.innerHTML
-    expect(captionTitleHtml).to.include("ERROR");
+    const captionTitleHtml =
+      el.shadowRoot!.querySelector('.dd-caption-title')!.innerHTML;
+    expect(captionTitleHtml).to.include('ERROR');
   });
 
   it('Return error (as title) if JSON cannot be parsed', async () => {
-    const el = await fixture<DdSlideCollection>(html`
-    <dd-slide-collection config-path="/test/data/wrongconfig.json">
+    const el = await fixture<DdSlideCollection>(html` <dd-slide-collection
+      config-path="/test/data/wrongconfig.json"
+    >
       <section></section>
     </dd-slide-collection>`);
 
     // wait to make sure data is fetched
     await timeout(100);
-    const captionTitleHtml = el.shadowRoot!.
-                             querySelector(".dd-caption-title")!.innerHTML
-    expect(captionTitleHtml).to.include("ERROR");
+    const captionTitleHtml =
+      el.shadowRoot!.querySelector('.dd-caption-title')!.innerHTML;
+    expect(captionTitleHtml).to.include('ERROR');
   });
 
   it('passes the a11y audit', async () => {

@@ -1,0 +1,25 @@
+# SPDX-FileCopyrightText: 2022 Digital Dasein <https://digitaldasein.org/>
+# SPDX-FileCopyrightText: 2022 Senne Van Baelen <senne@digitaldasein.org>
+# SPDX-FileCopyrightText: 2022 Gerben Peeters <gerben@digitaldasein.org>
+#
+# SPDX-License-Identifier: MIT
+
+name: build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: yarn install
+      - name: Build
+        run: yarn run build

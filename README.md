@@ -8,10 +8,10 @@ SPDX-License-Identifier: MIT
 
 # \<dd-slide-collection>
 
-[![pipeline](https://gitlab.com/digital-dasein/software/html-presentations/dd-slide-collection/badges/main/pipeline.svg?job=build&key_text=build)](https://gitlab.com/digital-dasein/software/html-presentations/dd-slide-collection/-/pipelines)
-[![coverage](https://gitlab.com/digital-dasein/software/html-presentations/dd-slide-collection/badges/main/coverage.svg?job=test)](https://digital-dasein.gitlab.io/software/html-presentations/dd-slide-collection/lcov-report/)
+[![pipeline](https://github.com/digitaldasein/dd-slide-collection/actions/workflows/build.yml/badge.svg)](https://github.com/digitaldasein/dd-slide-collection/actions/workflows/build.yml)
+[![tests](https://github.com/digitaldasein/dd-slide-collection/actions/workflows/test.yml/badge.svg)](https://digitaldasein.github.io/dd-slide-collection/coverage/lcov-report)
 [![REUSE 
-status](https://api.reuse.software/badge/gitlab.com/digital-dasein/software/html-presentations/dd-slide-collection)](https://api.reuse.software/info/gitlab.com/digital-dasein/software/html-presentations/dd-slide-collection)
+status](https://api.reuse.software/badge/github.com/digitaldasein/dd-slide-collection)](https://api.reuse.software/info/github.com/digitaldasein/dd-slide-collection)
 
 
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
@@ -50,13 +50,12 @@ To run a local development server that serves the basic demo located in
 
 For a production-ready build, either integrated into a library or standalone, 
 check out the
-[libcompono](https://gitlab.com/digital-dasein/software/html-presentations/libcompono) 
-library.
+[libcompono](https://github.com/digitaldasein/libcompono) library.
 
 ## Docs
 
 &rarr; [go to 
-docs](https://digital-dasein.gitlab.io/software/html-presentations/dd-slide-collection/docs/classes/DdSlideCollection.html)
+docs](https://digitaldasein.github.io/dd-slide-collection/docs/classes/DdSlideCollection.html)
 
 ## Linting and formatting
 
@@ -87,7 +86,7 @@ yarn test:watch
 ```
 
 Test results are available 
-[here](https://digital-dasein.gitlab.io/software/html-presentations/dd-slide-collection/lcov-report/).
+[here](https://digitaldasein.github.io/dd-slide-collection/coverage/lcov-report)).
 
 ## Tooling configs
 

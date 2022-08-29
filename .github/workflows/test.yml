@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: 2022 Digital Dasein <https://digitaldasein.org/>
+# SPDX-FileCopyrightText: 2022 Senne Van Baelen <senne@digitaldasein.org>
+# SPDX-FileCopyrightText: 2022 Gerben Peeters <gerben@digitaldasein.org>
+#
+# SPDX-License-Identifier: MIT
+
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: Playwright Tests
+
+    runs-on: ubuntu-latest
+    #container:
+      #image: mcr.microsoft.com/playwright:v1.25.0-focal
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: yarn install
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+      - name: Run tests
+        run: yarn run test
+      #- name: Code Coverage Report
+        #uses: irongut/CodeCoverageSummary@v1.3.0
+        #with:
+          #filename: coverage/cobertura-coverage.xml
+          #badge: true
+          #fail_below_min: true
+          #indicators: true
+          #output: both
+          #thresholds: '80 100'
