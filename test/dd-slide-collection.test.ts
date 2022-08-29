@@ -36,18 +36,21 @@ describe('DdSlideCollection', () => {
   it('Slide collection as full', async () => {
     const el = await fixture<DdSlideCollection>(html` <dd-slide-collection full>
     </dd-slide-collection>`);
-    // console.log(el.classList);
-    // expect(el.shadowRoot!.querySelector(".list")).to.not.equal(null);
+
+    expect(el.full).to.equal(true);
   });
 
   it('Organisation and corresponding URL rendering', async () => {
     const el = await fixture<DdSlideCollection>(html` <dd-slide-collection
       organisation="myOrg"
-      organisation-url="http:myorg.org"
+      organisation-url="http://myorg.org"
     >
     </dd-slide-collection>`);
-    // console.log(el.classList);
-    expect(el.shadowRoot!.querySelector('.list')).to.not.equal(null);
+
+    expect(el.organisation).to.equal('myOrg');
+    expect(el.organisationUrl).to.equal('http://myorg.org');
+
+    // should also check for href attributes
   });
 
   it('Hide custom caption slot', async () => {
