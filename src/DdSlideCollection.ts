@@ -27,6 +27,8 @@ const DEFAULT_ATTRIBUTES = {
   configPath: '',
 };
 
+const CURSOR_TIMEOUT_MS = 3000;
+
 /*---------------------------------------------------------------------*/
 /* Utils                                                               */
 /*---------------------------------------------------------------------*/
@@ -563,6 +565,10 @@ export class DdSlideCollection extends LitElement {
   @property({ type: Boolean, attribute: 'full' })
   full = DEFAULT_ATTRIBUTES.full;
 
+  /** @ignore */
+  @property({ type: Boolean })
+  cursorTimerRunning = false;
+
   /**
    * Factor for presenting in full screen mode (e.g. 0.8 will render the `full`
    * slide at 80% of the maximum screen size)
@@ -577,6 +583,26 @@ export class DdSlideCollection extends LitElement {
   /** @ignore */
   @property({ type: Boolean, attribute: false })
   goToPrint = false;
+
+  constructor() {
+    super();
+    this.addEventListener('mousemove', () => {
+      this.style.cursor = 'default';
+      if (!this.cursorTimerRunning) {
+        this.cursorTimerRunning = true;
+        this.style.cursor = 'default';
+        setTimeout(() => {
+          this.style.cursor = 'none';
+          this.cursorTimerRunning = false;
+        }, CURSOR_TIMEOUT_MS);
+      }
+    });
+  }
+
+  private _cursorTimeout: ReturnType<typeof setTimeout> = setTimeout(() => {
+    this.style.cursor = 'none';
+    this.cursorTimerRunning = false;
+  }, CURSOR_TIMEOUT_MS);
 
   async setPropsFromJson() {
     const jsonObj = await getJsonConfig(this.jsonConfig);
@@ -627,22 +653,22 @@ export class DdSlideCollection extends LitElement {
         </div>
         `;
     return `
-        <header class="dd-caption" title="Slide collection caption">
+        <header class="dd-caption">
           <div class="dd-caption-item dd-caption-left">
             ${ddImgElem}
           </div>
           <div class="dd-caption-item dd-caption-center">
-            <div class="dd-caption-title" title="Title">
+            <div class="dd-caption-title">
               ${this.mainTitle}<br>
             </div>
-            <div class="dd-caption-subtitle" title="Subtitle">
+            <div class="dd-caption-subtitle">
               <i>${this.subTitle}</i>
             </div>
           </div>
           <div class="dd-caption-item dd-caption-right">
-            <span title="Date">${this.date}</span><br>
-            <strong title="Author(s)">${this.author}</strong><br>
-            <span title="Organisation">${organisationEl}</span><br>
+            <span>${this.date}</span><br>
+            <strong>${this.author}</strong><br>
+            <span>${organisationEl}</span><br>
             ${captionUrlEl}
           </div>
         </header>
