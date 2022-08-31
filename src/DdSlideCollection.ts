@@ -25,9 +25,10 @@ const DEFAULT_ATTRIBUTES = {
   full: false,
   fullScaleFactor: 1,
   configPath: '',
+  cursorTimeout: 3000,
 };
 
-const CURSOR_TIMEOUT_MS = 3000;
+let CURSOR_TIMER: ReturnType<typeof setTimeout>;
 
 /*---------------------------------------------------------------------*/
 /* Utils                                                               */
@@ -561,13 +562,19 @@ export class DdSlideCollection extends LitElement {
   @property({ type: String, attribute: 'config-path' })
   jsonConfig = DEFAULT_ATTRIBUTES.configPath;
 
+  /**
+   * Timout (in ms) for the cursor to auto-hide
+   *
+   * **Corresponding attribute:** `cursor-timeout`
+   *
+   * **Default value:** `3000` (milliseconds)
+   */
+  @property({ type: Number, attribute: 'cursor-timeout' })
+  cursorTimeout = DEFAULT_ATTRIBUTES.cursorTimeout;
+
   /** @ignore */
   @property({ type: Boolean, attribute: 'full' })
   full = DEFAULT_ATTRIBUTES.full;
-
-  /** @ignore */
-  @property({ type: Boolean })
-  cursorTimerRunning = false;
 
   /**
    * Factor for presenting in full screen mode (e.g. 0.8 will render the `full`
@@ -587,22 +594,15 @@ export class DdSlideCollection extends LitElement {
   constructor() {
     super();
     this.addEventListener('mousemove', () => {
-      this.style.cursor = 'default';
-      if (!this.cursorTimerRunning) {
-        this.cursorTimerRunning = true;
+      if (this.cursorTimeout !== 0) {
         this.style.cursor = 'default';
-        setTimeout(() => {
+        if (CURSOR_TIMER) clearTimeout(CURSOR_TIMER);
+        CURSOR_TIMER = setTimeout(() => {
           this.style.cursor = 'none';
-          this.cursorTimerRunning = false;
-        }, CURSOR_TIMEOUT_MS);
+        }, this.cursorTimeout);
       }
     });
   }
-
-  private _cursorTimeout: ReturnType<typeof setTimeout> = setTimeout(() => {
-    this.style.cursor = 'none';
-    this.cursorTimerRunning = false;
-  }, CURSOR_TIMEOUT_MS);
 
   async setPropsFromJson() {
     const jsonObj = await getJsonConfig(this.jsonConfig);
