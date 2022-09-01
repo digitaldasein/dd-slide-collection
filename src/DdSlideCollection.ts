@@ -238,14 +238,14 @@ export class DdSlideCollection extends LitElement {
 
     /* Hover */
 
-    :host(.list) ::slotted(section.slide:hover),
-    :host(.list) ::slotted(dd-slide:hover) {
+    :host(.list) > ::slotted(.slide:hover),
+    :host(.list) > ::slotted(section:hover) {
       box-shadow: 0 0 0 20px
         var(--slide-collect-color-prim, rgba(65, 90, 72, 0.5));
     }
 
-    ::slotted(dd-slide),
-    ::slotted(section.slide) {
+    :host > ::slotted(section),
+    :host > ::slotted(.slide) {
       position: relative;
       z-index: 0;
       overflow: hidden;
@@ -258,8 +258,8 @@ export class DdSlideCollection extends LitElement {
       /*margin-bottom: var(--slide-collect-gap)*/
     }
 
-    :host(.full) ::slotted(dd-slide),
-    :host(.full) ::slotted(section.slide) {
+    :host(.full) > ::slotted(section),
+    :host(.full) > ::slotted(.slide) {
       position: absolute;
       transform-origin: 0 0;
       transform: scale(var(--slide-collect-full-scale-factor));
@@ -268,8 +268,8 @@ export class DdSlideCollection extends LitElement {
 
     /* Number */
 
-    ::slotted(section.slide)::after,
-    ::slotted(dd-slide)::after {
+    :host > ::slotted(section)::after,
+    :host > ::slotted(.slide)::after {
       position: absolute;
       font-size: var(--slide-collect-slide-nr-font-size);
       right: var(--slide-collect-slide-nr-right);
@@ -281,16 +281,17 @@ export class DdSlideCollection extends LitElement {
       content: counter(slide);
       z-index: 2;
     }
-    ::slotted(.slide.titlepage)::after,
-    ::slotted(dd-titlepage)::after {
+
+    :host > ::slotted(.slide.titlepage)::after,
+    :host > ::slotted(dd-titlepage)::after {
       counter-increment: slide;
       content: '';
     }
 
     /* List */
 
-    :host(.list) ::slotted(section.slide),
-    :host(.list) ::slotted(dd-slide) {
+    :host(.list) > ::slotted(.slide),
+    :host(.list) > ::slotted(section) {
       position: relative;
       box-shadow: calc(var(--slide-scale) * 4px) calc(var(--slide-scale) * 4px)
         0 calc(var(--slide-scale) * 4px)
@@ -301,8 +302,8 @@ export class DdSlideCollection extends LitElement {
       min-width: var(--slide-collect-width);
     }
 
-    :host(.list) ::slotted(section.slide *),
-    :host(.list) ::slotted(dd-slide *) {
+    :host(.list) > ::slotted(section.slide *),
+    :host(.list) > ::slotted(dd-slide *) {
       pointer-events: none;
     }
 
