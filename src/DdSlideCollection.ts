@@ -290,8 +290,8 @@ export class DdSlideCollection extends LitElement {
 
     /* List */
 
-    :host(.list) > ::slotted(.slide),
-    :host(.list) > ::slotted(section) {
+    :host(.list) ::slotted(.slide),
+    :host(.list) ::slotted(section) {
       position: relative;
       box-shadow: calc(var(--slide-scale) * 4px) calc(var(--slide-scale) * 4px)
         0 calc(var(--slide-scale) * 4px)
@@ -712,7 +712,9 @@ export class DdSlideCollection extends LitElement {
         this.style.setProperty('--slide-collect-full-scale-factor', `${scale}`);
         const offset = (innerHeight - offsetHeight * scale) / 2;
         // all slides
-        const slideElems = document.querySelectorAll('.slide');
+        const slideElems = document.querySelectorAll(
+          'dd-slide-collection > .slide'
+        );
         this.style.height = `${slideElems.length * innerHeight}px`;
         for (const [idx, slideElem] of slideElems.entries()) {
           slideElem.id = `${idx + 1}`;
@@ -729,7 +731,9 @@ export class DdSlideCollection extends LitElement {
       this.classList.remove('full');
       this.style.height = 'auto';
 
-      const slideElems = document.querySelectorAll('.slide');
+      const slideElems = document.querySelectorAll(
+        'dd-slide-collection > .slide'
+      );
       for (const slideElem of slideElems) {
         (slideElem as HTMLElement).style.marginTop = `0px`;
         (slideElem as HTMLElement).style.marginLeft = `0px`;
@@ -750,7 +754,9 @@ export class DdSlideCollection extends LitElement {
 
   /* c8 ignore next 13 */
   private _handleSlideClick = () => {
-    const slideElems = document.querySelectorAll('.slide');
+    const slideElems = document.querySelectorAll(
+      'dd-slide-collection > .slide'
+    );
     for (const [idx, elem] of slideElems.entries()) {
       (elem as HTMLElement).addEventListener('click', () => {
         if (!this.full) {
