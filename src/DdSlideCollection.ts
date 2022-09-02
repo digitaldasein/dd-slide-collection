@@ -145,6 +145,7 @@ export class DdSlideCollection extends LitElement {
    * |**`--dd-color-text-light`**  |`None (default)`            | *light* text color, which propagates into nested `dd-elements`                            |
    * |**`--dd-color-caption-bg`**  |`var(--dd-color-prim-dark, rgba(65, 90, 72, 1))`       | caption ackground color, falls back to `rgba(65, 90, 72, 1)` if not defined               |
    * |**`--dd-color-caption-fg`**  |`var(--dd-color-text-light, rgba(255,255,255,1)`)| caption foreground color                                                                  |
+   * |**`--dd-color-caption-link`**|`inherit`                   | caption link color (by default, inherit from caption fg color   |
    * |**`--dd-slide-gap`**         |`96px`                      | gap between slides in `list`-mode                                                         |
    * |**`--dd-slide-ratio`**       |`calc(16/9)`                | slide apsect ratio |
    * |**`--dd-slide-width`**       |`1024px`                    | slide width (this, together with`--dd-slide-ratio` determines the slide height)           |
@@ -180,6 +181,8 @@ export class DdSlideCollection extends LitElement {
         --dd-color-text-light,
         rgba(255, 255, 255, 1)
       );
+
+      --dd-color-caption-link: inherit;
 
       --slide-collect-gap: var(--dd-slide-gap, 96px);
       --slide-collect-ratio: var(--dd-slide-ratio, calc(16 / 9));
@@ -381,6 +384,10 @@ export class DdSlideCollection extends LitElement {
       height: var(--caption-height);
     }
 
+    .dd-caption a {
+      color: var(--dd-color-caption-link);
+    }
+
     .dd-caption-item {
       font-size: var(--caption-font-size);
     }
@@ -427,11 +434,6 @@ export class DdSlideCollection extends LitElement {
     img.caption-img {
       height: var(--caption-img-height);
       display: block;
-    }
-
-    .caption-url {
-      /*text-decoration: none;*/
-      color: var(--caption-fg-color);
     }
 
     .dd-slide-collect-org-url {
