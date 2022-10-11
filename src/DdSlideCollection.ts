@@ -449,6 +449,10 @@ export class DdSlideCollection extends LitElement {
     /* Print */
 
     @media print {
+      .dd-caption {
+        display: none !important;
+      }
+
       :host(.full) {
         display: inline;
       }
@@ -869,11 +873,13 @@ export class DdSlideCollection extends LitElement {
       /* c8 ignore next 2 */
       // how to test?
       this.goToPrint = true;
+      if (!this.full) this.classList.remove('list');
     });
     window.addEventListener('afterprint', () => {
       /* c8 ignore next 2 */
       // how to test?
       this.goToPrint = false;
+      if (!this.full) this.classList.add('list');
     });
   }
 
@@ -882,16 +888,8 @@ export class DdSlideCollection extends LitElement {
     window.removeEventListener('DOMContentLoaded', this._handleLocation);
     window.removeEventListener('resize', this._handleResize);
     document.removeEventListener('scroll', this._handleScroll);
-    window.removeEventListener('beforeprint', () => {
-      /* c8 ignore next 2 */
-      // how to test?
-      this.goToPrint = true;
-    });
-    window.removeEventListener('afterprint', () => {
-      /* c8 ignore next 2 */
-      // how to test?
-      this.goToPrint = false;
-    });
+    window.removeEventListener('beforeprint', () => {});
+    window.removeEventListener('afterprint', () => {});
     super.disconnectedCallback();
   }
 
