@@ -153,6 +153,7 @@ export class DdSlideCollection extends LitElement {
    * |**`--dd-font`**              |`24px/2 'Roboto', sans-serif`| font style |
    * |**`--dd-font-size`**         |`24px`                      | font _size_ setter |
    * |**`--dd-caption-height`**    |`250px`                     | height of the caption in `list`-mode |
+   * |**`--dd-caption-font-size`**  |`calc(2.2 * var(--dd-font-size);`| * font-size of caption|
    * |**`--dd-slide-nr-font-size`**|`16px`                      | slide number font-size |
    * |**`--dd-slide-nr-color`**    |`var(--dd-color-text)`      | slide number color     |
    * |**`--dd-slide-nr-right`**    |`13px`                      | slide number right     |
@@ -197,7 +198,10 @@ export class DdSlideCollection extends LitElement {
 
       --caption-height: var(--dd-caption-height, 250px);
       --caption-center-width: 60%;
-      --caption-font-size: calc(2.2 * var(--slide-collect-font-size));
+      --caption-font-size: var(
+        --dd-caption-font-size,
+        calc(2.2 * var(--slide-collect-font-size))
+      );
       --caption-padding-left: 30px;
       --caption-padding-top: 30px;
       --caption-padding-right: 30px;
