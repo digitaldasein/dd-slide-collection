@@ -153,7 +153,8 @@ export class DdSlideCollection extends LitElement {
    * |**`--dd-font`**              |`24px/2 'Roboto', sans-serif`| font style |
    * |**`--dd-font-size`**         |`24px`                      | font _size_ setter |
    * |**`--dd-caption-height`**    |`250px`                     | height of the caption in `list`-mode |
-   * |**`--dd-caption-font-size`**  |`calc(2.2 * var(--dd-font-size);`| * font-size of caption|
+   * |**`--dd-caption-font-size`** |`calc(2.2 * var(--dd-font-size);`| * font-size of caption|
+   * |**`--dd-caption-img-height`**|`calc(0.5 * var(--dd-caption-height));`| * height of caption image (width/height ratio holds) |
    * |**`--dd-slide-nr-font-size`**|`16px`                      | slide number font-size |
    * |**`--dd-slide-nr-color`**    |`var(--dd-color-text)`      | slide number color     |
    * |**`--dd-slide-nr-right`**    |`13px`                      | slide number right     |
@@ -206,7 +207,10 @@ export class DdSlideCollection extends LitElement {
       --caption-padding-top: 30px;
       --caption-padding-right: 30px;
       --caption-padding-bottom: 30px;
-      --caption-img-height: calc(0.6 * var(--caption-height));
+      --caption-img-height: var(
+        --dd-caption-img-height,
+        calc(0.5 * var(--caption-height))
+      );
       --caption-fg-color: var(
         --dd-color-caption-fg,
         var(--slide-collect-text-color-light)
