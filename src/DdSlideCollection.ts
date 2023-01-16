@@ -882,12 +882,16 @@ export class DdSlideCollection extends LitElement {
       // how to test?
       this.goToPrint = true;
       if (!this.full) this.classList.remove('list');
+      const externalEngine = document.querySelector('.shower');
+      if (externalEngine) externalEngine.classList.remove('full');
     });
     window.addEventListener('afterprint', () => {
       /* c8 ignore next 2 */
       // how to test?
       this.goToPrint = false;
       if (!this.full) this.classList.add('list');
+      const externalEngine = document.querySelector('.shower');
+      if (externalEngine && this.full) externalEngine.classList.add('full');
     });
   }
 

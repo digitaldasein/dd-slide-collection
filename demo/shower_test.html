@@ -1,0 +1,75 @@
+<!--
+SPDX-FileCopyrightText: 2022 Digital Dasein <https://digital-dasein.gitlab.io/>
+SPDX-FileCopyrightText: 2022 Gerben Peeters <gerben@digitaldasein.org>
+SPDX-FileCopyrightText: 2022 Senne Van Baelen <senne@digitaldasein.org>
+
+SPDX-License-Identifier: MIT
+-->
+
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="./shower_test.css">
+  <style>
+    body,html {
+      margin:0;
+      padding:0;
+    }
+    @media print {
+      @page {
+        margin: 0;
+        size: 1024px 576px;
+      }
+    }
+  </style>
+</head>
+<body class="shower">
+  <script type="module">
+    import { html, render } from 'lit';
+    import '../dist/src/dd-slide-collection.js';
+
+    render(
+      html`
+      <dd-slide-collection main-title="My cool title"
+                           sub-title="My subtitle"
+                           author="Senne Van Baelen, Gerben Peeters"
+                           img-src="logo.jpeg">
+
+        <!--<div slot="caption">This is a custom Caption</div>-->
+        <section class="slide titlepage">
+          <h2>OK now, let's roll</h2>
+        </section>
+
+        <section class="slide">
+          <div class="center">
+            <h2>This is the second slide!</h2>
+            <p>With a paragraph</p>
+            <ul>
+              <li>And a list</li>
+              <li>Second item</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="slide">
+          <h2>Slide 3</h2>
+        </section>
+
+        <section class="slide">
+          <h2>Slide 4</h2>
+          <p>This is my fouth slide</p>
+          <p>And some content here</p>
+        </section>
+
+       <section class="slide">
+          <h2>OOOOO</h2>
+        </section>
+      </dd-slide-collection>
+      `,
+      document.querySelector('body')
+    );
+  </script>
+  <script src="./shower.js"></script>
+</body>
+</html>

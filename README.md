@@ -52,6 +52,14 @@ For a production-ready build, either integrated into a library or standalone,
 check out the
 [libcompono](https://github.com/digitaldasein/libcompono) library.
 
+### Demo with shower framework
+
+```bash
+yarn start
+```
+
+Open [http://localhost:8000/demo/shower_test.html](http://localhost:8000/demo/shower_test.html)
+
 ## Docs
 
 &rarr; [go to 
