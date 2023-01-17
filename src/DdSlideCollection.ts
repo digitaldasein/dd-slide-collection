@@ -290,7 +290,7 @@ export class DdSlideCollection extends LitElement {
       text-align: right;
       counter-increment: slide;
       content: counter(slide);
-      z-index: 2;
+      z-index: 999;
     }
 
     :host > ::slotted(.slide.titlepage)::after,

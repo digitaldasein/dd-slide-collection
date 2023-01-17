@@ -3,6 +3,10 @@
  * @shower/core v3.3.0, https://github.com/shower/core
  * @copyright 2010–2023 Vadim Makeev, https://pepelsbey.net
  * @license MIT
+ *
+ * SPDX-FileCopyrightText: 2010-2023 Vadim Makeev <https://github.com/shower/core>
+ * SPDX-License-Identifier: MIT
+
  */
 (function () {
     'use strict';
